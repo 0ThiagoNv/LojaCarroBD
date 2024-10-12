@@ -1,3 +1,7 @@
+package Entidades;
+
+import java.util.ArrayList;
+
 public class Automovel {
     private String id;
     private double valor;

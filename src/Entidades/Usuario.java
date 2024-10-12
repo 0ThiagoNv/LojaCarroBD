@@ -1,24 +1,19 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+package Entidades;
 
 public abstract class Usuario {
     private String email;
     private String senha;
     private String nome;
-    private String id;
     private String cpf;
     private String telefone;
-    private boolean adm;
 
-    public Usuario(String email, String senha, String cpf, String id,
-                   String nome, String telefone, boolean adm) {
+    public Usuario(String email, String senha, String cpf,
+                   String nome, String telefone) {
         this.cpf = cpf;
-        this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;
-        this.adm = adm;
     }
 
     public Usuario(String email, String senha) {
@@ -30,14 +25,6 @@ public abstract class Usuario {
 
     private void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    private void setId(String id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -72,11 +59,8 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
-    public boolean isAdm() { return adm; }
-
-    private void setAdm(boolean adm) { this.adm = adm; }
-
     public void alterarSenha(String senhaNova){
         setSenha(senhaNova);
     }
+
 }

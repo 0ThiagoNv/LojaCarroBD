@@ -1,13 +1,19 @@
-public class Administrador extends Usuario{
+package Entidades;
+
+import java.util.Scanner;
+
+public class Administrador extends Usuario {
+    Scanner scan = new Scanner(System.in);
+
     private double salario;
     private String cargo;
 
     public Administrador(String email, String senha) {
         super(email, senha);
     }
-    public Administrador(String email, String senha, String cpf, String id, String nome,
-                         String telefone, String cargo, double salario, boolean adm) {
-        super(email, senha, cpf, id, nome, telefone, adm);
+    public Administrador(String nome, String email, String senha, String cpf,
+                         String telefone, String cargo, double salario) {
+        super(email, senha, cpf, nome, telefone);
         this.cargo = cargo;
         this.salario = salario;
     }
@@ -28,7 +34,4 @@ public class Administrador extends Usuario{
         this.salario = salario;
     }
 
-    public void menuAdmin(){
-
-    }
 }
