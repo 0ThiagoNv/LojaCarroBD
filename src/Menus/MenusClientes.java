@@ -2,10 +2,11 @@ package Menus;
 
 import Entidades.Automovel;
 import Entidades.Cliente;
-import Utilidades.UtilidadesAutomoveis;
-import Utilidades.Verificadores;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static Utilidades.UtilidadesAutomoveis.listaAutomoveis;
+import static Utilidades.Verificadores.*;
 
 public class MenusClientes {
     static Scanner scan = new Scanner(System.in);
@@ -16,16 +17,16 @@ public class MenusClientes {
         String nome = scan.nextLine();
         System.out.println("Insira seu email: ");
         String email = scan.next();
-        Verificadores.verificacaoEmail(email);
+        verificacaoEmail(email);
         System.out.println("Insira sua senha: ");
         scan.nextLine();
         String senha = scan.nextLine();
         System.out.println("Insira seu CPF: ");
         String cpf = scan.nextLine();
-        Verificadores.verificacaoCPF(cpf);
+        verificacaoCPF(cpf);
         System.out.println("Insira seu telefone");
         String telefone = scan.nextLine();
-        Verificadores.verificacaoTelefone(telefone);
+        verificacaoTelefone(telefone);
         System.out.println("Insira seu endereço: ");
         String endereco = scan.nextLine();
         listaClientesCadastrados.add(new Cliente(nome, email, senha, cpf, telefone, endereco));
@@ -45,26 +46,28 @@ public class MenusClientes {
         }
         if(escolha == 1){
             menuClienteExibirAutomoveis();
-        } else if (escolha == 2) {
+        }
+        if (escolha == 2) {
             menuClienteComprarAutomovel();
         }
-        else if(escolha == 3) {
-            return;
+        if(escolha == 3) {
+            System.out.println("Saindo do programa...");
+            System.exit(0);
         }
     }
     public static void menuClienteExibirAutomoveis(){
-        for(Automovel veiculo : UtilidadesAutomoveis.listaAutomoveis){
+        for(Automovel veiculo : listaAutomoveis){
             System.out.println(veiculo);
         }
         menuClienteInicio();
     }
     public static void menuClienteComprarAutomovel(){
-        Automovel a1 = new Automovel("1","1",true,"123456",200000);
-        UtilidadesAutomoveis.listaAutomoveis.add(a1);
+        Automovel a1 = new Automovel("BMW I8","1","1",true,"123456",200000);
+        listaAutomoveis.add(a1);
 
         System.out.println("Digite o chassi do automovel que deseja comprar");
         String chassiVeiculoComprado = scan.nextLine();
-        for(Automovel veiculoComprado : UtilidadesAutomoveis.listaAutomoveis ){
+        for(Automovel veiculoComprado : listaAutomoveis ){
             if(veiculoComprado.getChassi().equals(chassiVeiculoComprado)){
                 System.out.println("-----------------");
                 System.out.println(veiculoComprado);
@@ -77,9 +80,10 @@ public class MenusClientes {
                     escolha = scan.nextInt();
                 }
                 if(escolha == 1){
-                    UtilidadesAutomoveis.listaAutomoveis.remove(veiculoComprado);
+                    listaAutomoveis.remove(veiculoComprado);
                     System.out.println("Compra efetuada com sucesso");
-                } else if (escolha == 2) {
+                }
+                if (escolha == 2) {
                     menuClienteInicio();
                 }
             }

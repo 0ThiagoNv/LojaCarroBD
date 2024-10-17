@@ -1,29 +1,42 @@
 package Menus;
 
-import Utilidades.Verificadores;
+import Entidades.Administrador;
+
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static Utilidades.Verificadores.*;
 
 public class MenusAdmin {
     static Scanner scan = new Scanner(System.in);
+    static ArrayList<Administrador> listaAdminsCadastrados = new ArrayList<>();
+
     public static void menuAdminCadastro(){
         System.out.println("Insira seu nome: ");
-        scan.nextLine();
         String nome = scan.nextLine();
+
         System.out.println("Insira seu email: ");
         String email = scan.nextLine();
-        Verificadores.verificacaoEmail(email);
+        verificacaoEmail(email);
+
         System.out.println("Insira sua senha: ");
         String senha = scan.nextLine();
+
         System.out.println("Insira seu CPF: ");
         String cpf = scan.nextLine();
-        Verificadores.verificacaoCPF(cpf);
+        verificacaoCPF(cpf);
+
         System.out.println("Insira seu telefone");
         String telefone = scan.nextLine();
-        Verificadores.verificacaoTelefone(telefone);
+        verificacaoTelefone(telefone);
+
         System.out.println("Digite seu cargo: ");
         String cargo = scan.nextLine();
+
         System.out.println("Digite seu salario: ");
         double salario = scan.nextDouble();
+
+        listaAdminsCadastrados.add(new Administrador(nome, email, senha, cpf, telefone, cargo, salario ));
     }
     public static void menuAdminInicio(){
         System.out.println("------------------");

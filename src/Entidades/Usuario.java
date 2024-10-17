@@ -16,9 +16,6 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
-    public Usuario(String email, String senha) {
-    }
-
     public String getCpf() {
         return cpf;
     }

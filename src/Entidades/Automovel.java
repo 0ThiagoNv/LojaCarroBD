@@ -3,18 +3,28 @@ package Entidades;
 import java.util.ArrayList;
 
 public class Automovel {
+    private String nome;
     private String id;
     private double valor;
     private String chassi;
     private String placa;
     private boolean novo;
 
-    public Automovel(String chassi, String id, boolean novo, String placa, double valor) {
+    public Automovel(String nome,String chassi, String id, boolean novo, String placa, double valor) {
+        this.nome = nome;
         this.chassi = chassi;
         this.id = id;
         this.novo = novo;
         this.placa = placa;
         this.valor = valor;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getChassi() {
