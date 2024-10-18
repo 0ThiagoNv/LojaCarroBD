@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.ArrayList;
+
 public class Automovel {
     private String nome;
     private Integer id;
@@ -9,13 +11,9 @@ public class Automovel {
     private String placa;
     private boolean novo;
 
-<<<<<<< HEAD
     public static ArrayList<Automovel> listaAutomoveis = new ArrayList<>();
 
     public Automovel(String nome,String chassi, boolean novo, String placa, double valor) {
-=======
-    public Automovel(String nome, String chassi, String id, boolean novo, String placa, double valor) {
->>>>>>> ccf2626ae69e2ace3af7b80751fc5483795e2cb5
         this.nome = nome;
         this.id = contadorId++;
         this.chassi = chassi;
@@ -72,7 +70,6 @@ public class Automovel {
         this.valor = valor;
     }
 
-<<<<<<< HEAD
     public String toString(){
         return "-----------------"+
                 "\n nome: "+ getNome() +
@@ -82,11 +79,5 @@ public class Automovel {
                 "\n placa: "+ getPlaca() +
                 "\n valor: "+ getValor() +
                 "\n-----------------";
-=======
-    public String toString() {
-        return "Nome: " + nome + ", ID: " + id + ", Chassi: " + chassi +
-                ", Placa: " + placa + ", Valor: " + valor +
-                ", Novo: " + (novo ? "Sim" : "Não");
->>>>>>> ccf2626ae69e2ace3af7b80751fc5483795e2cb5
     }
 }

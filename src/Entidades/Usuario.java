@@ -6,7 +6,7 @@ public abstract class Usuario {
     private String nome;
     private String cpf;
     private String telefone;
-    //private String tipo;
+
     public Usuario(String nome, String cpf, String telefone){
         this.nome = nome;
         this.cpf = cpf;
@@ -25,7 +25,7 @@ public abstract class Usuario {
         return cpf;
     }
 
-    private void setCpf(String cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -33,7 +33,7 @@ public abstract class Usuario {
         return nome;
     }
 
-    private void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -41,7 +41,7 @@ public abstract class Usuario {
         return telefone;
     }
 
-    private void setTelefone(String telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
@@ -49,7 +49,7 @@ public abstract class Usuario {
         return email;
     }
 
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -57,7 +57,7 @@ public abstract class Usuario {
         return senha;
     }
 
-    private void setSenha(String senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

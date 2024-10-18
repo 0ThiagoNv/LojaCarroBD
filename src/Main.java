@@ -1,4 +1,3 @@
-
 import Entidades.Automovel;
 import Entidades.Cliente;
 import Entidades.Funcionario;
@@ -21,7 +20,7 @@ public class Main {
                 "12345678980", "William", "997968090",
                 "GERENTE", 10000));
         while (true){
-        menuPrincipal();
+            menuPrincipal();
         }
     }
 }

@@ -27,7 +27,7 @@ public class MenusConcessionaria {
         int escolhaPrincipal = scan.nextInt();
         while (escolhaPrincipal != 1 && escolhaPrincipal !=2 &&
                 escolhaPrincipal != 3 && escolhaPrincipal !=  4) {
-            System.out.println("Digite novamente, apenas 1,2 ou 3");
+            System.out.println("Digite novamente, apenas 1,2,3 ou 4");
             escolhaPrincipal = scan.nextInt();
         }
         switch (escolhaPrincipal) {

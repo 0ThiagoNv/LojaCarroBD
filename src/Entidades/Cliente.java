@@ -19,7 +19,7 @@ public class Cliente extends Usuario {
         return endereco;
     }
 
-    private void setEndereco(String endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
