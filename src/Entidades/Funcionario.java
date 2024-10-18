@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Funcionario extends Usuario {
     private String cargo;
     private double salario;
+    private static int contadorId = 1;
+    private int id;
 
     public static ArrayList<Funcionario> listaFuncionariosCadastrados = new ArrayList<>();
 
@@ -12,21 +14,35 @@ public class Funcionario extends Usuario {
         super(nome, cpf, telefone);
         this.cargo = cargo;
         this.salario = salario;
+        this.id = contadorId++;
     }
 
     public Funcionario(String email, String senha, String cpf, String nome, String telefone, String cargo, double salario) {
         super(email, senha, cpf, nome, telefone);
         this.cargo = cargo;
         this.salario = salario;
+        this.id = contadorId++;
     }
 
-    public String getCargo() { return cargo; }
+    public int getId() {
+        return id;
+    }
 
-    public void setCargo(String cargo) { this.cargo = cargo; }
+    public String getCargo() {
+        return cargo;
+    }
 
-    public double getSalario() { return salario; }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
-    public void setSalario(double salario) { this.salario = salario; }
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 
     public static ArrayList<Funcionario> getListaFuncionariosCadastrados() {
         return listaFuncionariosCadastrados;
@@ -34,5 +50,10 @@ public class Funcionario extends Usuario {
 
     public static void setListaFuncionariosCadastrados(ArrayList<Funcionario> listaFuncionariosCadastrados) {
         Funcionario.listaFuncionariosCadastrados = listaFuncionariosCadastrados;
+    }
+
+    public String toString() {
+        return "ID: " + id + ", Nome: " + getNome() + ", CPF: " + getCpf() + ", Telefone: " + getTelefone() +
+                ", Cargo: " + cargo + ", Salário: " + salario;
     }
 }
