@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 public class Automovel {
     private String nome;
-    private String id;
+    private Integer id;
+    private static Integer contadorId = 1;
     private double valor;
     private String chassi;
     private String placa;
     private boolean novo;
 
-    public Automovel(String nome,String chassi, String id, boolean novo, String placa, double valor) {
+    public static ArrayList<Automovel> listaAutomoveis = new ArrayList<>();
+
+    public Automovel(String nome,String chassi, boolean novo, String placa, double valor) {
         this.nome = nome;
+        this.id = contadorId++;
         this.chassi = chassi;
-        this.id = id;
         this.novo = novo;
         this.placa = placa;
         this.valor = valor;
@@ -35,11 +38,11 @@ public class Automovel {
         this.chassi = chassi;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -67,4 +70,14 @@ public class Automovel {
         this.valor = valor;
     }
 
+    public String toString(){
+        return "-----------------"+
+                "\n nome: "+ getNome() +
+                "\n chassi: "+ getChassi() +
+                "\n id: "+ getId() +
+                "\n novo: "+ isNovo() +
+                "\n placa: "+ getPlaca() +
+                "\n valor: "+ getValor() +
+                "\n-----------------";
+    }
 }

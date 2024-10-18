@@ -2,15 +2,15 @@ package Menus;
 
 import Entidades.Automovel;
 import Entidades.Cliente;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import static Utilidades.UtilidadesAutomoveis.listaAutomoveis;
+import static Entidades.Automovel.listaAutomoveis;
+import static Entidades.Cliente.listaClientesCadastrados;
+import static Menus.MenusConcessionaria.menuPrincipal;
 import static Utilidades.Verificadores.*;
 
 public class MenusClientes {
     static Scanner scan = new Scanner(System.in);
-    static ArrayList<Cliente> listaClientesCadastrados = new ArrayList<>();
 
     public static void menuCadastroCliente(){
         System.out.println("Insira seu nome: ");
@@ -45,19 +45,21 @@ public class MenusClientes {
         System.out.println("3- Sair do programa");
         System.out.println("------------------");
         int escolha = scan.nextInt();
-        while(escolha != 1 && escolha != 2 && escolha != 3){
+        while (escolha != 1 && escolha != 2 && escolha != 3) {
             System.out.println("Digite novamente, apenas 1, 2 ou 3");
             escolha = scan.nextInt();
         }
-        if(escolha == 1){
-            menuClienteExibirAutomoveis();
-        }
-        if (escolha == 2) {
-            menuClienteComprarAutomovel();
-        }
-        if(escolha == 3) {
-            System.out.println("Saindo do programa...");
-            System.exit(0);
+        switch (escolha) {
+            case 1:
+                menuClienteExibirAutomoveis();
+                break;
+            case 2:
+                menuClienteComprarAutomovel();
+                break;
+            case 3:
+                System.out.println("Saindo do programa...");
+                menuPrincipal();
+                break;
         }
     }
     public static void menuClienteExibirAutomoveis(){
@@ -67,29 +69,38 @@ public class MenusClientes {
         menuClienteInicio();
     }
     public static void menuClienteComprarAutomovel(){
-
-        System.out.println("Digite o chassi do automovel que deseja comprar");
-        String chassiVeiculoComprado = scan.nextLine();
+        System.out.println("Digite o id do automovel que deseja comprar");
+        Integer idVeiculoComprado = scan.nextInt();
+        Automovel verificarChassi = null;
         for(Automovel veiculoComprado : listaAutomoveis ){
-            if(veiculoComprado.getChassi().equals(chassiVeiculoComprado)){
-                System.out.println("-----------------");
-                System.out.println(veiculoComprado);
-                System.out.println("1- confirmar compra");
-                System.out.println("2- voltar");
-                System.out.println("-----------------");
-                int escolha = scan.nextInt();
-                while(escolha != 2 && escolha != 1){
-                    System.out.println("Digite novamente, apenas 1 ou 2");
-                    escolha = scan.nextInt();
-                }
-                if(escolha == 1){
-                    listaAutomoveis.remove(veiculoComprado);
-                    System.out.println("Compra efetuada com sucesso");
-                }
-                if (escolha == 2) {
-                    menuClienteInicio();
-                }
+            if(veiculoComprado.getId().equals(idVeiculoComprado)){
+                verificarChassi = veiculoComprado;
+                break;
             }
         }
+        if(verificarChassi != null){
+            System.out.println("-----------------");
+            System.out.println(verificarChassi);
+            System.out.println("1- confirmar compra");
+            System.out.println("2- voltar");
+            System.out.println("-----------------");
+            int escolha = scan.nextInt();
+            while(escolha != 2 && escolha != 1){
+                System.out.println("Digite novamente, apenas 1 ou 2");
+                escolha = scan.nextInt();
+            }
+            switch (escolha){
+                case 1:
+                    listaAutomoveis.remove(verificarChassi);
+                    System.out.println("Compra efetuada com sucesso");
+                    break;
+                case 2:
+                    menuClienteInicio();
+                    break;
+            }
+        } else{
+            System.out.println("Chassi não encontrado");
+        }
+        menuClienteInicio();
     }
 }
