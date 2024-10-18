@@ -30,6 +30,16 @@ public class Verificadores {
             email = scan.nextLine();
         }
     }
+
+    public static void verificacaoPlacaAutomovel(String placa){
+        String placaRegex = "^[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}$";
+
+        while (!placa.matches(placaRegex)) {
+            System.out.println("Placa inválida. Digite novamente no formato correto (ex: ABC1D23):");
+            placa = scan.nextLine();
+        }
+    }
+
     public static char verificacaoAdminOuCliente(){
 
         System.out.println("Você é admin ou cliente?");

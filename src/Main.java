@@ -10,7 +10,7 @@ import static Menus.MenusConcessionaria.menuPrincipal;
 public class Main {
     public static void main(String[] args) {
         listaAutomoveis.add(new Automovel("bmw", "123", true,
-                "ABC1234",100000));
+                "ABC1X34",100000));
 
         listaClientesCadastrados.add(new Cliente("w",
                 "w@gmail.com", "123", "12345678990",

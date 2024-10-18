@@ -180,8 +180,8 @@ public class MenusGerente {
         boolean novo = scan.nextBoolean();
 
         System.out.println("Digite a placa: ");
-        scan.nextLine();
-        String placa = scan.nextLine();
+        String placa = scan.next();
+        verificacaoPlacaAutomovel(placa);
 
         System.out.println("Digite o valor: ");
         double valor = scan.nextDouble();

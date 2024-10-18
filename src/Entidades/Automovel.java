@@ -71,11 +71,17 @@ public class Automovel {
     }
 
     public String toString(){
+        String usadoOuNovo;
+        if(isNovo() == true){
+            usadoOuNovo = "Novo";
+        } else{
+            usadoOuNovo = "SemiNovo";
+        }
         return "-----------------"+
                 "\n nome: "+ getNome() +
                 "\n chassi: "+ getChassi() +
                 "\n id: "+ getId() +
-                "\n novo: "+ isNovo() +
+                "\n estado: "+ usadoOuNovo +
                 "\n placa: "+ getPlaca() +
                 "\n valor: "+ getValor() +
                 "\n-----------------";
