@@ -18,19 +18,25 @@ public class MenusGerente {
     public static void menuGerenteCadastro(){
         System.out.println("Insira seu nome: ");
         String nome = scan.nextLine();
+
         System.out.println("Insira seu email: ");
         String email = scan.nextLine();
-        verificacaoEmail(email);
+        email = verificacaoEmail(email);
+
         System.out.println("Insira sua senha: ");
         String senha = scan.nextLine();
+
         System.out.println("Insira seu CPF(xxxxxxxxxxx): ");
         String cpf = scan.nextLine();
-        verificacaoCPF(cpf);
+        cpf = verificacaoCPF(cpf);
+
         System.out.println("Insira seu telefone(9xxxxxxxx): ");
         String telefone = scan.nextLine();
-        verificacaoTelefone(telefone);
+        telefone = verificacaoTelefone(telefone);
+
         System.out.println("Digite seu cargo: ");
         String cargo = scan.nextLine().toUpperCase();
+
         if(!cargo.equals(GERENTE)){
             System.out.println("Apenas GERENTES podem utilizar o sistema");
             System.exit(0);
@@ -99,10 +105,10 @@ public class MenusGerente {
         String nome = scan.nextLine();
         System.out.println("Digite o cpf(xxxxxxxxxxx): ");
         String cpf = scan.nextLine();
-        verificacaoCPF(cpf);
+        cpf = verificacaoCPF(cpf);
         System.out.println("Digite o telefone(9xxxxxxxx): ");
         String telefone = scan.nextLine();
-        verificacaoTelefone(telefone);
+        telefone = verificacaoTelefone(telefone);
         System.out.println("Digite o cargo: ");
         String cargo = scan.nextLine().toUpperCase();
         System.out.println("Digite o salario: ");
@@ -174,11 +180,15 @@ public class MenusGerente {
         System.out.println("Digite o chassi: ");
         String chassi = scan.nextLine();
         System.out.println("o carro é novo? ");
+        while(!scan.hasNextBoolean()){
+            System.out.println("Digite novamente, apenas true(se for novo) ou false(se for seminovo)");
+            scan.next();
+        }
         boolean novo = scan.nextBoolean();
         System.out.println("Digite a placa: ");
         scan.nextLine();
         String placa = scan.nextLine();
-        verificacaoPlaca(placa);
+        placa = verificacaoPlaca(placa);
         System.out.println("Digite o valor: ");
         double valor = scan.nextDouble();
         scan.nextLine();

@@ -18,18 +18,18 @@ public class MenusClientes {
 
         System.out.println("Insira seu email: ");
         String email = scan.nextLine();
-        verificacaoEmail(email);
+        email = verificacaoEmail(email);
 
         System.out.println("Insira sua senha: ");
         String senha = scan.nextLine();
 
         System.out.println("Insira seu CPF(xxxxxxxxxxx): ");
         String cpf = scan.nextLine();
-        verificacaoCPF(cpf);
+        cpf = verificacaoCPF(cpf);
 
         System.out.println("Insira seu telefone(9xxxxxxxx): ");
         String telefone = scan.nextLine();
-        verificacaoTelefone(telefone);
+        telefone = verificacaoTelefone(telefone);
 
         System.out.println("Insira seu endereço: ");
         String endereco = scan.nextLine();

@@ -6,6 +6,7 @@ import static Entidades.Automovel.listaAutomoveis;
 import static Entidades.Cliente.listaClientesCadastrados;
 import static Entidades.Funcionario.listaFuncionariosCadastrados;
 import static Menus.MenusConcessionaria.menuPrincipal;
+import static Utilidades.Constantes.GERENTE;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class Main {
 
         listaFuncionariosCadastrados.add(new Funcionario("william@gmail.com", "12345",
                 "12345678980", "William", "997968090",
-                "GERENTE", 10000));
+                GERENTE, 10000));
         while (true){
             menuPrincipal();
         }

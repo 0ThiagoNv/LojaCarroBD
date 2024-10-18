@@ -57,7 +57,7 @@ public class MenusConcessionaria {
 
         System.out.println("Insira seu email: ");
         String email = scan.next();
-        verificacaoEmail(email);
+        email = verificacaoEmail(email);
         System.out.println("Insira sua senha: ");
         scan.nextLine();
         String senha = scan.nextLine();
@@ -96,7 +96,7 @@ public class MenusConcessionaria {
         System.out.println("Digite o email da sua conta");
         scan.nextLine();
         String emailEsqueceuSenha = scan.nextLine();
-        verificacaoEmail(emailEsqueceuSenha);
+        emailEsqueceuSenha = verificacaoEmail(emailEsqueceuSenha);
 
         for (Cliente clienteEsqueceuSenha : listaClientesCadastrados){
             if(clienteEsqueceuSenha.getEmail().equals(emailEsqueceuSenha)){
