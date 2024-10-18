@@ -15,22 +15,27 @@ public class MenusClientes {
     public static void menuCadastroCliente(){
         System.out.println("Insira seu nome: ");
         String nome = scan.nextLine();
+
         System.out.println("Insira seu email: ");
-        String email = scan.next();
+        String email = scan.nextLine();
         verificacaoEmail(email);
+
         System.out.println("Insira sua senha: ");
-        scan.nextLine();
         String senha = scan.nextLine();
-        System.out.println("Insira seu CPF: ");
+
+        System.out.println("Insira seu CPF(xxxxxxxxxxx): ");
         String cpf = scan.nextLine();
         verificacaoCPF(cpf);
-        System.out.println("Insira seu telefone");
+
+        System.out.println("Insira seu telefone(9xxxxxxxx): ");
         String telefone = scan.nextLine();
         verificacaoTelefone(telefone);
+
         System.out.println("Insira seu endereço: ");
         String endereco = scan.nextLine();
-        listaClientesCadastrados.add(new Cliente(nome, email, senha, cpf, telefone, endereco));
 
+        listaClientesCadastrados.add(new Cliente(nome, email, senha,
+                cpf, telefone, endereco));
     }
 
     public static void menuClienteInicio() {
@@ -62,8 +67,6 @@ public class MenusClientes {
         menuClienteInicio();
     }
     public static void menuClienteComprarAutomovel(){
-        Automovel a1 = new Automovel("BMW I8","1","1",true,"123456",200000);
-        listaAutomoveis.add(a1);
 
         System.out.println("Digite o chassi do automovel que deseja comprar");
         String chassiVeiculoComprado = scan.nextLine();

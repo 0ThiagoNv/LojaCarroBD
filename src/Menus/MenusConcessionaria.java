@@ -1,11 +1,12 @@
 package Menus;
 
-import Entidades.Administrador;
 import Entidades.Cliente;
+import Entidades.Funcionario;
 
 import java.util.Scanner;
 
-import static Menus.MenusAdmin.*;
+import static Entidades.Funcionario.listaFuncionariosCadastrados;
+import static Menus.MenusGerente.*;
 import static Menus.MenusClientes.*;
 import static Utilidades.Verificadores.verificacaoAdminOuCliente;
 import static Utilidades.Verificadores.verificacaoEmail;
@@ -14,13 +15,14 @@ public class MenusConcessionaria {
     static Scanner scan = new Scanner(System.in);
 
     public static void menuPrincipal() {
+
         System.out.println("------------------");
         System.out.println("1- Entrar");
         System.out.println("2- Cadastrar");
         System.out.println("3- Esqueceu sua senha");
         System.out.println("------------------");
-        int escolhaPrincipal = scan.nextInt();
 
+        int escolhaPrincipal = scan.nextInt();
         while (escolhaPrincipal != 1 && escolhaPrincipal !=2 && escolhaPrincipal != 3) {
             System.out.println("Digite novamente, apenas 1,2 ou 3");
             escolhaPrincipal = scan.nextInt();
@@ -33,20 +35,20 @@ public class MenusConcessionaria {
         }
         if (escolhaPrincipal == 3) {
             Cliente clienteCadastrado = null;
-            Administrador adminCadastrado = null;
+            Funcionario funcionarioCadastrado = null;
             System.out.println("Digite o email da sua conta");
             scan.nextLine();
             String emailEsqueceuSenha = scan.nextLine();
             verificacaoEmail(emailEsqueceuSenha);
 
             for (Cliente clienteEsqueceuSenha : listaClientesCadastrados) {
-                for(Administrador adminEsqueceuSenha : MenusAdmin.listaAdminsCadastrados){
+                for(Funcionario funcionarioEsqueceuSenha : listaFuncionariosCadastrados){
                     if (clienteEsqueceuSenha.getEmail().equals(emailEsqueceuSenha)) {
                         clienteCadastrado = clienteEsqueceuSenha;
                         break;
                     }
-                    if(adminEsqueceuSenha.getEmail().equals(emailEsqueceuSenha)){
-                        adminCadastrado = adminEsqueceuSenha;
+                    if(funcionarioEsqueceuSenha.getEmail().equals(emailEsqueceuSenha)){
+                        funcionarioCadastrado = funcionarioEsqueceuSenha;
                         break;
                     }
                 }
@@ -57,23 +59,24 @@ public class MenusConcessionaria {
                 clienteCadastrado.alterarSenha(senhaNova);
                 System.out.println("Senha alterada com sucesso");
             }
-            if(adminCadastrado != null){
+            if(funcionarioCadastrado != null){
                 System.out.println("Digite sua nova senha: ");
                 String senhaNova = scan.nextLine();
-                adminCadastrado.alterarSenha(senhaNova);
+                funcionarioCadastrado.alterarSenha(senhaNova);
                 System.out.println("Senha alterada com sucesso");
             }
-            if(adminCadastrado == null && clienteCadastrado == null){
+            if(funcionarioCadastrado == null && clienteCadastrado == null){
                 System.out.println("Este email não está cadastrado");
             }
         }
+
     }
     public static void menuCadastro() {
-        verificacaoAdminOuCliente();
-        if(verificacaoAdminOuCliente() == 'c'){
+        char opcaoClienteOuAdmin = verificacaoAdminOuCliente();
+        if(opcaoClienteOuAdmin == 'c'){
             menuCadastroCliente();
-        } else if (verificacaoAdminOuCliente() == 'a') {
-            menuAdminCadastro();
+        } else if (opcaoClienteOuAdmin == 'a') {
+            menuGerenteCadastro();
         }
     }
     public static void menuEntrar() {
@@ -85,30 +88,31 @@ public class MenusConcessionaria {
         scan.nextLine();
         String senha = scan.nextLine();
         Cliente verificadorClienteCadastrado = null;
-        Administrador verificadorAdminCadastrado = null;
+        Funcionario verificadorFuncionarioCadastrado = null;
         for (Cliente clienteCadastrado : listaClientesCadastrados){
-            for(Administrador adminCadastrado : listaAdminsCadastrados){
                 if(clienteCadastrado.getEmail().equals(email) &&
                         clienteCadastrado.getSenha().equals(senha)){
                     verificadorClienteCadastrado = clienteCadastrado;
                     break;
                 }
-                if(adminCadastrado.getEmail().equals(email) &&
-                        adminCadastrado.getSenha().equals(senha)){
-                    verificadorAdminCadastrado = adminCadastrado;
-                    break;
-                }
+        }
+        for(Funcionario funcionarioCadastrado : listaFuncionariosCadastrados){
+            if(funcionarioCadastrado.getEmail().equals(email) &&
+                    funcionarioCadastrado.getSenha().equals(senha)){
+                verificadorFuncionarioCadastrado = funcionarioCadastrado;
+                break;
             }
         }
+
         if(verificadorClienteCadastrado != null){
             System.out.println("Login efetuado com sucesso");
             menuClienteInicio();
         }
-        if(verificadorAdminCadastrado != null){
+        if(verificadorFuncionarioCadastrado != null){
             System.out.println("Login efetuado com sucesso");
-            menuAdminInicio();
+            menuGerenteInicio();
         }
-        if(verificadorClienteCadastrado == null && verificadorAdminCadastrado == null){
+        if(verificadorClienteCadastrado == null && verificadorFuncionarioCadastrado == null){
             System.out.println("Usuario não encontrado, senha ou email incorreto");
         }
     }

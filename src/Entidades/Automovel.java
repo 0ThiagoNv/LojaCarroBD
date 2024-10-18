@@ -31,7 +31,7 @@ public class Automovel {
         return chassi;
     }
 
-    private void setChassi(String chassi) {
+    public void setChassi(String chassi) {
         this.chassi = chassi;
     }
 
@@ -66,4 +66,5 @@ public class Automovel {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
 }

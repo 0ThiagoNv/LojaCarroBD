@@ -6,7 +6,12 @@ public abstract class Usuario {
     private String nome;
     private String cpf;
     private String telefone;
-
+    //private String tipo;
+    public Usuario(String nome, String cpf, String telefone){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
     public Usuario(String email, String senha, String cpf,
                    String nome, String telefone) {
         this.cpf = cpf;
