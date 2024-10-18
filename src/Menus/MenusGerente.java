@@ -3,6 +3,7 @@ package Menus;
 import Entidades.Automovel;
 import Entidades.Funcionario;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Entidades.Automovel.listaAutomoveis;
@@ -17,97 +18,96 @@ public class MenusGerente {
     public static void menuGerenteCadastro(){
         System.out.println("Insira seu nome: ");
         String nome = scan.nextLine();
-
         System.out.println("Insira seu email: ");
         String email = scan.nextLine();
         verificacaoEmail(email);
-
         System.out.println("Insira sua senha: ");
         String senha = scan.nextLine();
-
         System.out.println("Insira seu CPF(xxxxxxxxxxx): ");
         String cpf = scan.nextLine();
         verificacaoCPF(cpf);
-
         System.out.println("Insira seu telefone(9xxxxxxxx): ");
         String telefone = scan.nextLine();
         verificacaoTelefone(telefone);
-
         System.out.println("Digite seu cargo: ");
         String cargo = scan.nextLine().toUpperCase();
         if(!cargo.equals(GERENTE)){
             System.out.println("Apenas GERENTES podem utilizar o sistema");
             System.exit(0);
+            menuPrincipal();
         }
-
         System.out.println("Digite seu salario: ");
         double salario = scan.nextDouble();
 
         listaFuncionariosCadastrados.add(new Funcionario(email, senha, cpf,nome,
                 telefone, cargo, salario ));
     }
-    public static void menuGerenteInicio(){
-        System.out.println("------------------");
-        System.out.println("1- Adicionar funcionário");
-        System.out.println("2- Exibir Funcionários");
-        System.out.println("3- Editar funcionário");
-        System.out.println("4- Adicionar Automóvel");
-        System.out.println("5- Exibir Automóveis");
-        System.out.println("6- Editar Automóvel");
-        System.out.println("7- Sair do programa");
-        System.out.println("------------------");
-        int escolhaMenuGerenteInicio = scan.nextInt();
-        while(escolhaMenuGerenteInicio != 1 && escolhaMenuGerenteInicio != 2 &&
-                escolhaMenuGerenteInicio != 3 && escolhaMenuGerenteInicio != 4 &&
-                escolhaMenuGerenteInicio != 5 && escolhaMenuGerenteInicio != 6 &&
-                escolhaMenuGerenteInicio != 7){
-            System.out.println("Digite novamente, valor invalido");
-            escolhaMenuGerenteInicio = scan.nextInt();
+    public static void menuGerenteInicio() {
+        while (true) {
+            try {
+                System.out.println("------------------");
+                System.out.println("1- Adicionar funcionario");
+                System.out.println("2- Exibir Funcionarios");
+                System.out.println("3- Editar funcionario");
+                System.out.println("4- Adicionar Automovel");
+                System.out.println("5- Exibir Automoveis");
+                System.out.println("6- Editar Automovel");
+                System.out.println("7- Sair do programa");
+                System.out.println("------------------");
+                int escolhaMenuGerenteInicio = scan.nextInt();
+                scan.nextLine();
+                while (escolhaMenuGerenteInicio != 1 && escolhaMenuGerenteInicio != 2 &&
+                        escolhaMenuGerenteInicio != 3 && escolhaMenuGerenteInicio != 4 &&
+                        escolhaMenuGerenteInicio != 5 && escolhaMenuGerenteInicio != 6 &&
+                        escolhaMenuGerenteInicio != 7) {
+                    System.out.println("Digite novamente, valor invalido");
+                    escolhaMenuGerenteInicio = scan.nextInt();
+                }
+                switch (escolhaMenuGerenteInicio) {
+                    case 1:
+                        adicionarFuncionario();
+                        break;
+                    case 2:
+                        exibirFuncionarios();
+                        break;
+                    case 3:
+                        editarFuncionario();
+                        break;
+                    case 4:
+                        adicionarAutomovel();
+                        break;
+                    case 5:
+                        exibirAutomoveis();
+                        break;
+                    case 6:
+                        editarAutomovel();
+                        break;
+                    case 7:
+                        System.out.println("Saindo do programa...");
+                        menuPrincipal();
+                        break;
+                }
+            }catch(InputMismatchException e){
+                System.out.println("Valor invalido, digite apenas numeros: ");
+                scan.nextLine();
+            }
+            menuGerenteInicio();
         }
-        switch (escolhaMenuGerenteInicio){
-            case 1:
-                adicionarFuncionario();
-                break;
-            case 2:
-                exibirFuncionarios();
-                break;
-            case 3:
-                editarFuncionario();
-                break;
-            case 4:
-                adicionarAutomovel();
-                break;
-            case 5:
-                exibirAutomoveis();
-                break;
-            case 6:
-                editarAutomovel();
-                break;
-            case 7:
-                System.out.println("Saindo do programa...");
-                menuPrincipal();
-                break;
-        }
-        menuGerenteInicio();
     }
     public static void adicionarFuncionario(){
         System.out.println("Digite o nome: ");
-        scan.nextLine();
         String nome = scan.nextLine();
-
         System.out.println("Digite o cpf(xxxxxxxxxxx): ");
         String cpf = scan.nextLine();
         verificacaoCPF(cpf);
-
         System.out.println("Digite o telefone(9xxxxxxxx): ");
         String telefone = scan.nextLine();
         verificacaoTelefone(telefone);
-
         System.out.println("Digite o cargo: ");
         String cargo = scan.nextLine().toUpperCase();
-
         System.out.println("Digite o salario: ");
         double salario = scan.nextDouble();
+        scan.nextLine();
 
         listaFuncionariosCadastrados.add(new Funcionario(nome, cpf, telefone,
                 cargo, salario));
@@ -146,14 +146,14 @@ public class MenusGerente {
                 escolhaAlterar = scan.nextInt();
             }
             if(escolhaAlterar == 1){
-                System.out.println("Cargo atual do funcionário: "+ funcionarioAlterado.getCargo());
+                System.out.println("Cargo atual do funcionario: "+ funcionarioAlterado.getCargo());
                 System.out.println("Digite o cargo novo do funcionario: ");
                 String cargoNovo = scan.next();
                 funcionarioAlterado.setCargo(cargoNovo);
                 System.out.println("Cargo alterado com sucesso");
             }
             if(escolhaAlterar == 2){
-                System.out.println("Salário atual do funcionário: "+ funcionarioAlterado.getSalario());
+                System.out.println("Salário atual do funcionario: "+ funcionarioAlterado.getSalario());
                 System.out.println("Digite o salario novo do funcionario: ");
                 double salarioNovo = scan.nextDouble();
                 funcionarioAlterado.setSalario(salarioNovo);
@@ -170,21 +170,18 @@ public class MenusGerente {
     }
     public static void adicionarAutomovel(){
         System.out.println("Digite o nome: ");
-        scan.nextLine();
         String nomeAutomovel = scan.nextLine();
-
         System.out.println("Digite o chassi: ");
         String chassi = scan.nextLine();
-
         System.out.println("o carro é novo? ");
         boolean novo = scan.nextBoolean();
-
         System.out.println("Digite a placa: ");
         scan.nextLine();
         String placa = scan.nextLine();
-
+        verificacaoPlaca(placa);
         System.out.println("Digite o valor: ");
         double valor = scan.nextDouble();
+        scan.nextLine();
 
         listaAutomoveis.add(new Automovel(nomeAutomovel, chassi, novo, placa, valor));
         System.out.println("Cadastro feito com sucesso");

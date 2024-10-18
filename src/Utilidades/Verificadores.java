@@ -30,6 +30,15 @@ public class Verificadores {
             email = scan.nextLine();
         }
     }
+
+    public static void verificacaoPlaca(String placa) {
+        String placaRegex = "^[A-Za-z0-9]{7}$";
+        while (!placa.matches(placaRegex)) {
+
+            System.out.println("Máximo de 7 digitos, digite novamente: ");
+            placa = scan.nextLine().toUpperCase();
+        }
+    }
     public static char verificacaoAdminOuCliente(){
 
         System.out.println("Você é admin ou cliente?");
