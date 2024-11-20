@@ -1,6 +1,8 @@
 import Entidades.Automovel;
 import Entidades.Cliente;
 import Entidades.Funcionario;
+import connection.dataBase;
+import java.sql.Connection;
 
 import static Entidades.Automovel.listaAutomoveis;
 import static Entidades.Cliente.listaClientesCadastrados;
@@ -10,6 +12,9 @@ import static Utilidades.Constantes.GERENTE;
 
 public class Main {
     public static void main(String[] args) {
+
+        Connection connection = dataBase.getInstance().connection();
+
         listaAutomoveis.add(new Automovel("bmw", "123", true,
                 "ABC1X34",100000));
 
